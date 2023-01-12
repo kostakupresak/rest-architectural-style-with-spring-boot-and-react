@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <link href="images/todo-app.png" rel="shortcut icon"
+        type="image/x-icon"/>
+  <link href="styles/style.css" rel="stylesheet"/>
+  <link href="styles/mdb-ui-kit.css" rel="stylesheet"/>
+  <title>ToDo App</title>
+</head>
+<body>
+<section id="root" class="vh-100 background-gradient">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-12 col-xl-10">
+        <div class="card card-gradient">
+          <div class="card-body p-4">
+            <div class="text-center pt-3 pb-2">
+              <img class="logo" src="images/todo-app.png" alt="Check"/>
+              <h2 class="my-4">ToDo App</h2>
+            </div>
+            <table class="table mb-0">
+              <thead>
+              <tr>
+                <th scope="col">Task</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="fw-normal">
+                <td class="align-middle">
+                  <span>Clean house</span>
+                </td>
+                <td class="align-middle">
+                  <h6 class="mb-0"><span class="badge bg-warning">Pending</span></h6>
+                </td>
+                <td class="align-middle">
+                  <span data-mdb-toggle="tooltip" title="Done">
+                    <img src="images/done.png" alt="Delete" class="action-icon"/>
+                  </span>
+                  <span data-mdb-toggle="tooltip" title="Remove">
+                    <img src="images/delete.png" alt="Delete" class="action-icon"/>
+                  </span>
+                </td>
+              </tr>
+              <tr class="fw-normal">
+                <td class="align-middle">
+                  <span>Ride a bike</span>
+                </td>
+                <td class="align-middle">
+                  <h6 class="mb-0"><span class="badge bg-success">Done</span></h6>
+                </td>
+                <td class="align-middle">
+                  <span data-mdb-toggle="tooltip" title="Undo">
+                    <img src="images/undo.png" alt="Delete" class="action-icon"/>
+                  </span>
+                  <span data-mdb-toggle="tooltip" title="Remove">
+                    <img src="images/delete.png" alt="Delete" class="action-icon"/>
+                  </span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
