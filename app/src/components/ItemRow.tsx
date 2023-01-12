@@ -5,11 +5,17 @@ import itemService from "../services/itemService";
 interface ItemRowProps {
   item: Item
   rerenderItem: (item: Item) => void
+  unrenderItem: (item: Item) => void
 }
 
-function ItemRow({item, rerenderItem}: ItemRowProps): JSX.Element {
+function ItemRow({item, rerenderItem, unrenderItem}: ItemRowProps): JSX.Element {
   const itemStatusText: string = item.isToggled ? 'Done' : 'Pending';
   const itemStatusClass: string = item.isToggled ? 'badge bg-success' : 'badge bg-warning';
+
+  async function handleDelete(): Promise<void> {
+    const deletedItem: Item = await itemService.delete(item.id);
+    unrenderItem(deletedItem);
+  }
 
   async function handleToggle(): Promise<void> {
     const updatedItem: Item = await itemService.toggle(item.id);
@@ -42,7 +48,7 @@ function ItemRow({item, rerenderItem}: ItemRowProps): JSX.Element {
       </td>
       <td className="align-middle">
         <ItemToggleButton/>
-        <span data-mdb-toggle="tooltip" title="Remove">
+        <span data-mdb-toggle="tooltip" title="Remove" onClick={handleDelete}>
           <img src="images/delete.png" alt="Delete" className="action-icon"/>
         </span>
       </td>

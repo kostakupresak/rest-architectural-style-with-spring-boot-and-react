@@ -29,10 +29,18 @@ function ItemsTable(): JSX.Element {
     setItems(updatedItems);
   }
 
+  function unrenderItem(item: Item): void {
+    const updatedItems: Item[] = items.filter(i => i.id !== item.id);
+    setItems(updatedItems);
+  }
+
   function ItemRows(): JSX.Element {
     return (
       <>
-        {items.map(item => <ItemRow key={`item-${item.id}`} item={item} rerenderItem={rerenderItem}/>)}
+        {
+          items.map(item =>
+            <ItemRow key={`item-${item.id}`} item={item} rerenderItem={rerenderItem} unrenderItem={unrenderItem}/>)
+        }
       </>
     );
   }
