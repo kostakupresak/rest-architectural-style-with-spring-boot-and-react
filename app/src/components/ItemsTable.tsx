@@ -1,39 +1,13 @@
-import {useEffect, useState} from "react";
-
-import {Item} from "../models/Item";
 import ItemRow from "./ItemRow";
+import {Item} from "../models/Item";
 
-import itemService from "../services/itemService";
+interface ItemsTableProps {
+  items: Item[]
+  rerenderItem: (item: Item) => void
+  unrenderItem: (item: Item) => void
+}
 
-function ItemsTable(): JSX.Element {
-  const [items, setItems] = useState<Item[]>([]);
-
-  async function loadItems(): Promise<void> {
-    const items: Item[] = await itemService.getAll();
-    setItems(items);
-  }
-
-  useEffect(() => {
-    void loadItems();
-  }, []);
-
-  function rerenderItem(item: Item): void {
-    const foundIndex: number = items.findIndex(i => i.id === item.id);
-
-    if (foundIndex < 0) {
-      return;
-    }
-
-    const updatedItems: Item[] = [...items];
-    updatedItems[foundIndex] = item;
-    setItems(updatedItems);
-  }
-
-  function unrenderItem(item: Item): void {
-    const updatedItems: Item[] = items.filter(i => i.id !== item.id);
-    setItems(updatedItems);
-  }
-
+function ItemsTable({items, rerenderItem, unrenderItem}: ItemsTableProps): JSX.Element {
   function ItemRows(): JSX.Element {
     return (
       <>
