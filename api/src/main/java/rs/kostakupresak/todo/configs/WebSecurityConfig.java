@@ -18,11 +18,15 @@ public class WebSecurityConfig implements WebMvcConfigurer {
     @Value("#{'${todo.cors.allowedMethods}'.split(',')}")
     private List<String> allowedMethods;
 
+    @Value("#{'${todo.cors.allowedHeaders}'.split(',')}")
+    private List<String> allowedHeaders;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(this.allowedOrigins);
         configuration.setAllowedMethods(this.allowedMethods);
+        configuration.setAllowedHeaders(this.allowedHeaders);
 
         http.cors().configurationSource(request -> configuration);
 
