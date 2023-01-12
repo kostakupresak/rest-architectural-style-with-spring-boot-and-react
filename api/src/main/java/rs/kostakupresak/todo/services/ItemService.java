@@ -26,7 +26,7 @@ public class ItemService implements ItemServiceContract {
     @Override
     public List<ResponsePayload> findAll() {
         return this.itemRepository
-                .findAll()
+                .findAllByOrderByIdAsc()
                 .stream()
                 .map(this.itemMapper::map)
                 .collect(Collectors.toList());
